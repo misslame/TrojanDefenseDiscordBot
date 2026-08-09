@@ -1,5 +1,6 @@
 import argparse
 
+
 def parse_arguments():
     """Defines and parses command-line choices."""
     parser = argparse.ArgumentParser(description="Run the Discord Bot.")

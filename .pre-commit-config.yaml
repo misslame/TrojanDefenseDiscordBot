@@ -1,0 +1,54 @@
+# Pre-commit hooks for TrojanDefenseDiscordBot.
+# To install: pre-commit install
+# To update hooks: pre-commit autoupdate
+fail_fast: false
+minimum_pre_commit_version: 3.0.0
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+      - id: end-of-file-fixer
+        name: Fix end of files
+      - id: mixed-line-ending
+        name: Fix mixed line endings
+        args:
+          - --fix=lf
+      - id: check-yaml
+        name: Check YAML syntax
+      - id: check-json
+        name: Check JSON syntax
+      - id: check-toml
+        name: Check TOML syntax
+      - id: check-ast
+        name: Check Python syntax
+      - id: check-added-large-files
+        name: Check for large files
+        args:
+          - --maxkb=1000
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+      - id: detect-private-key
+        name: Detect private keys
+      - id: debug-statements
+        name: Detect debug statements
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
+    hooks:
+      - id: markdownlint-cli2
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.2
+    hooks:
+      - id: ruff-check
+        name: Ruff linter
+        args:
+          - --fix
+        types:
+          - python
+      - id: ruff-format
+        name: Ruff formatter
+        types:
+          - python
