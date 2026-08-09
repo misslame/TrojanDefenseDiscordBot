@@ -4,10 +4,11 @@ import os
 import discord
 from discord.ext import commands
 
-import utils
+from utils.get_env_variable import get_env_variable
+from utils.parse_arguments import parse_arguments
 
 # Parse terminal configurations immediately on startup
-args = utils.parse_arguments()
+args = parse_arguments()
 
 # Define bot instance with required intents
 intents = discord.Intents.default()
@@ -32,7 +33,7 @@ async def on_ready():
     try:
         if args.test:
             TEST_GUILD = discord.Object(
-                id=utils.get_env_variable("DISCORD_SERVER_ID_FOR_TESTING")
+                id=get_env_variable("DISCORD_SERVER_ID_FOR_TESTING")
             )
             bot.tree.copy_global_to(guild=TEST_GUILD)
             synced = await bot.tree.sync(guild=TEST_GUILD)
@@ -54,7 +55,7 @@ async def on_ready():
 async def main():
     async with bot:
         await load_extensions()
-        await bot.start(utils.get_env_variable("DISCORD_BOT_TOKEN"))
+        await bot.start(get_env_variable("DISCORD_BOT_TOKEN"))
 
 
 asyncio.run(main())
