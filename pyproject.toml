@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trojan-defense-discord-bot"
+version = "0.1.0"
+description = "A Discord bot for USC community moderation, organization, and onboarding."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "discord.py==2.7.1",
+    "python-dotenv==1.2.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["commands*", "live_features*", "utils*"]
+namespaces = true
