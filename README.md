@@ -8,26 +8,5 @@ and onboarding.
 
 ## Setup
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and sync
-the locked dependencies:
-
-```bash
-uv sync
-```
-
-Copy `EXAMPLE.env` to `.env`, then replace the example values with your Discord
-application credentials.
-
-## Run
-
-Start the bot in production mode:
-
-```bash
-uv run bot.py
-```
-
-Pass `--test` to sync commands to the configured test server immediately:
-
-```bash
-uv run bot.py --test
-```
+Follow the [developer setup guide](docs/developer/set_up.md) to install
+dependencies, configure the environment, and run the bot.
