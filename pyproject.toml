@@ -17,3 +17,8 @@ dependencies = [
 where = ["."]
 include = ["commands*", "live_features*", "utils*"]
 namespaces = true
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.2",
+]
