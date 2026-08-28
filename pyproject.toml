@@ -21,6 +21,9 @@ namespaces = true
 [tool.setuptools.package-dir]
 "" = "src"
 
+[tool.ruff.lint]
+ignore = ["BLE001"]
+
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.2",
