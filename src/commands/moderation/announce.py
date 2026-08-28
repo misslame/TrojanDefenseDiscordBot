@@ -3,12 +3,12 @@ from discord import app_commands
 from discord.ext import commands
 
 
-class GithubIssue(commands.Cog):
+class Announce(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @app_commands.command(name="github_issue", description="Check latency")
-    async def githubissue(self, interaction: discord.Interaction):
+    @app_commands.command(name="announce", description="Check latency")
+    async def announce(self, interaction: discord.Interaction):
         # Use interaction.response to reply to slash commands
         latency = round(self.bot.latency * 1000)
         await interaction.response.send_message(f"🏓 Pong! {latency}ms.")
@@ -16,4 +16,4 @@ class GithubIssue(commands.Cog):
 
 # The setup function that main.py calls to register the Command
 async def setup(bot: commands.Bot):
-    await bot.add_cog(GithubIssue(bot))
+    await bot.add_cog(Announce(bot))

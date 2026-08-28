@@ -3,13 +3,17 @@ title: Developer Setup
 description: Set up and run TrojanDefenseDiscordBot with uv
 ---
 
+## Supported Shells
+
+The root `bot` script works in Git Bash, WSL on Windows, Linux, and macOS.
+
 ## Install Dependencies
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and sync
 the locked dependencies:
 
 ```bash
-uv sync
+./bot --setup
 ```
 
 ## Configure the Environment
@@ -22,11 +26,25 @@ application credentials.
 Start the bot in production mode:
 
 ```bash
-uv run bot.py
+./bot --run
 ```
 
 Pass `--test` to sync commands to the configured test server immediately:
 
 ```bash
-uv run bot.py --test
+./bot --run --test
 ```
+
+The dispatcher is intentionally invoked as `./bot`; it does not install a global
+`bot` command or shell alias.
+
+## Reset Generated State
+
+To remove only the generated local database state, run:
+
+```bash
+./bot --reset
+```
+
+The command asks for confirmation and preserves configuration, source files,
+dependencies, hooks, and documentation.

@@ -14,9 +14,12 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["commands*", "live_features*", "utils*"]
+where = ["src"]
+include = ["commands*", "db*", "event_handlers*", "live_features*", "utils*"]
 namespaces = true
+
+[tool.setuptools.package-dir]
+"" = "src"
 
 [dependency-groups]
 dev = [

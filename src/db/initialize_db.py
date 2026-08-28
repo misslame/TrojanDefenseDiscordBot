@@ -1,6 +1,6 @@
-from utils.get_env_variable import get_env_variable
-from db.db_constants import SCHEMA_PATH
 from db.db import get_connection
+from db.db_constants import SCHEMA_PATH
+
 
 def initialize_database(GUILD):
     connection = get_connection(GUILD.id)

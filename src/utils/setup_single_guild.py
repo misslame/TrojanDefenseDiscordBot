@@ -1,5 +1,6 @@
-from utils.init_guilds import init_guild
 from db.initialize_db import initialize_database
+from utils.init_guilds import init_guild
+
 
 async def setup_single_guild(bot, guild):
     bot.tree.copy_global_to(guild=guild)

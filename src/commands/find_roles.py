@@ -3,12 +3,12 @@ from discord import app_commands
 from discord.ext import commands
 
 
-class Warn(commands.Cog):
+class FindRoles(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    @app_commands.command(name="warn", description="Check latency")
-    async def warn(self, interaction: discord.Interaction):
+    @app_commands.command(name="find_roles", description="Check latency")
+    async def find_roles(self, interaction: discord.Interaction):
         # Use interaction.response to reply to slash commands
         latency = round(self.bot.latency * 1000)
         await interaction.response.send_message(f"🏓 Pong! {latency}ms.")
@@ -16,4 +16,4 @@ class Warn(commands.Cog):
 
 # The setup function that main.py calls to register the Command
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Warn(bot))
+    await bot.add_cog(FindRoles(bot))

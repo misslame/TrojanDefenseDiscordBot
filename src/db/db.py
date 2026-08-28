@@ -1,5 +1,7 @@
 import sqlite3
+
 from db.db_constants import DATABASE_PATH
+
 
 def get_connection(GUILD_ID):
     # Make sure the data directory exists
@@ -14,8 +16,9 @@ def get_connection(GUILD_ID):
 
     return connection
 
+
 def add_user(GUILD_ID, user_id, user_name, user_nickname):
-    try: 
+    try:
         connection = get_connection(GUILD_ID)
         connection.execute(
             """
@@ -24,16 +27,12 @@ def add_user(GUILD_ID, user_id, user_name, user_nickname):
                 username,
                 nickname
             ) VALUES ( ?, ?, ?)
-            """, 
-            (
-                user_id,
-                user_name,
-                user_nickname
-            )
+            """,
+            (user_id, user_name, user_nickname),
         )
         return True
     except Exception as error:
-        print("Error adding a new user: ", error) 
+        print("Error adding a new user: ", error)
         return False
     finally:
         connection.commit()

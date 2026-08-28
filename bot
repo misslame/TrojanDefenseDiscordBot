@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+usage() {
+    printf 'Usage: ./bot [--setup|--run|--reset|--help] [arguments...]\n'
+    printf '\nOptions:\n'
+    printf '  --setup       Install dependencies and pre-commit hooks\n'
+    printf '  --run         Run the bot and forward bot arguments\n'
+    printf '  --reset       Remove generated runtime state\n'
+    printf '  --help, -h    Show this help message\n'
+}
+
+cd "$ROOT_DIR"
+case "${1:-}" in
+    --setup|--run|--reset)
+        exec "$ROOT_DIR/repo_config/${1#--}.sh" "${@:2}"
+        ;;
+    --help|-h)
+        usage
+        ;;
+    "")
+        usage >&2
+        exit 2
+        ;;
+    *)
+        printf 'Unknown option: %s\n' "$1" >&2
+        usage >&2
+        exit 2
+        ;;
+esac
